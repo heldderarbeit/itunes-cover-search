@@ -15,9 +15,9 @@ module.exports = function (app) {
     });
     
     app.route('/search/:term')
-		.get(handler.searchCovers);
+        .get(handler.searchCovers);
 		
-	app.route('/recent')
-		.get(handler.getRecentSearches);
+    app.route('/recent')
+        .get(handler.getRecentSearches);
 		
 };
