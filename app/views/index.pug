@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title iTunes Cover Search
+    link(rel='stylesheet', href='libs/bootstrap-3.3.7/css/bootstrap.min.css', type='text/css')
+    link(rel='stylesheet', href='css/main.css', type='text/css')
+  body
+  
+    .container
+        
+      header
+        h1 iTunes Cover Search
+        
+      p Search for a release 
+        code
+          a(href=app_url+'search/swag?offset=0' target='_self')
+            |#{app_url}search/swag?offset=0
+            
+      p Get recent searches 
+        code
+          a(href=app_url+'recent' target='_self')
+            |#{app_url}recent
