@@ -5,7 +5,7 @@ const Search = require('../models/searches.js');
 
 function Handler () {
 	
-	this.searchCovers = function (req, res) {
+    this.searchCovers = function (req, res) {
 	    
         ipics(req.params.term, 'album')
         .then(result => {
@@ -13,8 +13,8 @@ function Handler () {
             const newSearch = new Search();
             newSearch.term = req.params.term;
 
-			newSearch.save(function (err) {
-				if (err) console.error('could not save search', err);
+	    newSearch.save(function (err) {
+		if (err) console.error('could not save search', err);
             });
             
             const releases = [];
@@ -31,16 +31,16 @@ function Handler () {
         }).catch(function(err) {
             res.json({ error: 'could not use ipics: ' + err });
         });
-	};
+    };
 	
-	this.getRecentSearches = function (req, res) {
+    this.getRecentSearches = function (req, res) {
 	    
-	    Search.find({}).sort({ _id: 'desc' }).exec(function(err, docs) {
-	        if (err) console.error('could not fetch saved searches', err);
+	Search.find({}).sort({ _id: 'desc' }).exec(function(err, docs) {
+	    if (err) console.error('could not fetch saved searches', err);
 	        
-	        const searches = [];
+	    const searches = [];
 	        
-	        for (let search of docs) {
+	    for (let search of docs) {
                 searches.push({
                     'term': search.term,
                     'date': search._id.getTimestamp()
@@ -48,8 +48,8 @@ function Handler () {
             }
             
             res.json(searches);
-	    });
-	};
+	});
+    };
 }
 
 module.exports = Handler;
